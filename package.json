@@ -1,9 +1,17 @@
 {
   "name": "non-fungible-valentine",
   "version": "0.0.1",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "hardhat": "npx hardhat --tsconfig tsconfig.hardhat.json"
+  },
   "dependencies": {
     "@openzeppelin/contracts": "^4.4.2",
-    "ethers": "^5.5.3"
+    "ethers": "^5.5.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.4",
@@ -35,6 +43,10 @@
     "solidity-coverage": "^0.7.18",
     "ts-node": "^10.4.0",
     "typechain": "^5.2.0",
-    "typescript": "^4.5.5"
+    "typescript": "^4.5.5",
+    "@types/react": "^17.0.33",
+    "@types/react-dom": "^17.0.10",
+    "@vitejs/plugin-react": "^1.0.7",
+    "vite": "^2.7.2"
   }
 }
