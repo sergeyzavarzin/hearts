@@ -1,19 +1,15 @@
-import { expect } from "chai";
-import { ethers } from "hardhat";
+// import { expect } from "chai";
+// import { ethers } from "hardhat";
 
-describe("Greeter", function () {
-  it("Should return the new greeting once it's changed", async function () {
-    const Greeter = await ethers.getContractFactory("Greeter");
-    const greeter = await Greeter.deploy("Hello, world!");
-    await greeter.deployed();
+// import { NonFungibleValentine__factory } from '../typechain-types'; // eslint-disable-line node/no-missing-import
 
-    expect(await greeter.greet()).to.equal("Hello, world!");
+// describe("NonFungibleValentine", () => {
 
-    const setGreetingTx = await greeter.setGreeting("Hola, mundo!");
+//   it("Should works", async () => {
+//     const signers = await ethers.getSigners();
 
-    // wait until the transaction is mined
-    await setGreetingTx.wait();
-
-    expect(await greeter.greet()).to.equal("Hola, mundo!");
-  });
-});
+//     const valentine = await new NonFungibleValentine__factory(
+//       signers[0]
+//     ).deploy();
+//   });
+// });
