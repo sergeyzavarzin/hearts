@@ -10,22 +10,15 @@ contract NonFungibleValentine is ERC721, Ownable {
 
     Counters.Counter private _tokenIdCounter;
 
-    string public message;
-
     constructor() ERC721("NonFungibleValentine", "NFV") {}
 
     function _baseURI() internal pure override returns (string memory) {
         return "https://";
     }
 
-    function safeMint(address to, string memory _message) public onlyOwner {
+    function mint() public {
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
-        message = _message;
-        _safeMint(to, tokenId);
-    }
-
-    function getMessage() public view returns (string memory) {
-        return message;
+        _safeMint(msg.sender, tokenId);
     }
 }
