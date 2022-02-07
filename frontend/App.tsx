@@ -1,21 +1,24 @@
 import { ethers } from 'ethers';
-import { ReactNode, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { connectWallet } from './utils/connectWallet';
 import nftContract from '../artifacts/contracts/NonFungibleValentine.sol/NonFungibleValentine.json';
 
 const mintAddress = '0x5FbDB2315678afecb367f032d93F642f64180aa3';
 
 export const App = () => {
   const [wallet, setWallet] = useState();
-  const [status, setStatus] = useState<
-    string | ReactNode | undefined
-  >();
 
   const connect = async () => {
-    const walletResponse = await connectWallet();
-    setStatus(walletResponse.status);
-    setWallet(walletResponse.address);
+    if (window.ethereum) {
+      try {
+        const accounts = await window.ethereum.request({
+          method: 'eth_requestAccounts',
+        });
+        setWallet(accounts[0]);
+      } catch (err) {
+        console.log({ err });
+      }
+    }
   };
 
   useEffect(() => {
@@ -46,9 +49,6 @@ export const App = () => {
   };
 
   return (
-    <div>
-      {status}
-      {wallet && <button onClick={handleMint}>MINT</button>}
-    </div>
+    <div>{wallet && <button onClick={handleMint}>MINT</button>}</div>
   );
 };
